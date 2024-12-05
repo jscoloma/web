@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="logo-container">
+    <img #logo src="assets/icon/tellevo.png" alt="Logotipo de la Empresa" class="logo" />
+    <p #text class="text"></p>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <ion-item>
+      <ion-label position="stacked">Usuario</ion-label>
+      <ion-input formControlName="username" placeholder="Ingresa Usuario" maxlength="8"></ion-input>
+    </ion-item>
+
+    <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">Error Usuario</div>
+
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input formControlName="password" type="password" placeholder="****" maxlength="4"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Ingresar</ion-button>
+  </form>
+
+  <!-- Botón para ir a la página de registro -->
+  <ion-button expand="block" color="secondary" (click)="goToRegister()">Registrarse</ion-button>
+</ion-content>
